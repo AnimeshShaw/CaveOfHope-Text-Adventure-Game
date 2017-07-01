@@ -187,7 +187,7 @@ public class TextController : MonoBehaviour
                 message = "You have now arrived deeper into the the left cave. Suddenly the ground starts " +
                     "shaking and the cave way behind you closes due to collapsed rocks. Now you cannot go back." +
                     " This section of the cave looks like a dead and decayed swamp graveyard. The place is " +
-                    "windy and cold.\n\nYou notice that among the dead there a single plant that is still " +
+                    "windy and cold.\n\nYou notice that among the dead there's a single plant that is still " +
                     "alive but the main trunk is somewhat broken by the wind. If it stays like that, it will " +
                     "probably die sooner or later.\n\nSelect F to move forward.\n\t\tU to use Rope and Stick " +
                     "to give support to the plant";
@@ -219,7 +219,7 @@ public class TextController : MonoBehaviour
             else
             {
                 message = "You fixed the plant using the stick as support and rope to tie them together. " +
-                        "You take a few steps back and feel a glow of satisfaction. In moments the chilly wind" +
+                        "You take a few steps back and feel a glow of satisfaction.\n\nIn moments the chilly wind" +
                         " stops blowing and you witness the environment suddenly change  itself from a dead " +
                         "state to a healthy vegetation. The path ahead of you now shines brighter.\n\nSelect" +
                         " F to move forward.";
@@ -238,7 +238,7 @@ public class TextController : MonoBehaviour
             message = "You have now arrived deeper into the the left cave. Suddenly the ground starts " +
             "shaking and the cave way behind you closes due to collapsed rocks. Now you cannot go back." +
             " This section of the cave looks like a dead and decayed swamp graveyard. The place is " +
-            "windy and cold.\n\nYou notice that among the dead there a single plant that is still " +
+            "windy and cold.\n\nYou notice that among the dead there's a single plant that is still " +
             "alive but the main trunk is somewhat broken by the wind. If it stays like that, it will " +
             "probably die sooner or later.\n\nSelect F to move forward.";
 
@@ -261,7 +261,7 @@ public class TextController : MonoBehaviour
             "mountains have come out of the walls forming a terrain. It shows no direct way inside the cave. " +
             "However, if you do a little rock climbing then you wouldn't have much problem. \n\nAfter every " +
             "few seconds you feel like you heard a growling sound from inside the cave. You wonder if you " +
-            "should go inside.\nSelect F to move forward deeper into the cave, and,\n\t\tR to Return to the " +
+            "should go inside.\n\nSelect F to move forward deeper into the cave, and,\n\t\tR to Return to the " +
             "Cave Mouth.";
 
         mainText.text = message;
@@ -289,10 +289,10 @@ public class TextController : MonoBehaviour
             {
                 message = "You have now arrived deeper into the the right cave. Suddenly the ground starts " +
                     "shaking and the cave way behind you closes due to collapsed rocks. Now you cannot go back." +
-                    " While exploring this section of the cave you come across a wild cat but it's staying low and" +
+                    "\n\nWhile exploring this section of the cave you come across a wild cat but it's staying low and" +
                     " did not run after noticing your presense. You realised the cat has broken it's legs while" +
                     " jumping across the rocky terrain.\n\nSelect F to move forward.\n\t\tU to use the Rope and" +
-                    " Stick to give support to the Cat's Legs";
+                    " Stick to help the Cat.";
 
                 mainText.text = message;
 
@@ -307,9 +307,11 @@ public class TextController : MonoBehaviour
                 {
                     if (GameInventoryController.HasElement(GameInventoryController.Inventory.ROPE))
                     {
-                        message = "You're moving forward deeper into the cave and sudenly you hear some noises " +
-                        "coming from above, you look up and see a huge rock falling where you stand.\n\nYou" +
-                        " were unable to move and died of a smashed skull.\n\nPress S to Play Again!";
+                        message = "You went past the cat and when you were just about ten steps ahead, you hear " +
+                            "a vicious growling sound coming from behind. The cat turned into an 8 foot tall demon " +
+                            "panther.\n\nYour heart may have skipped a beat but before you could do anything you were" +
+                            " turned into several pieces of human meat by a single hit from the panters claws.\n\n" +
+                            "Press S to Play Again!";
 
                         GameInventoryController.RemoveInventory(GameInventoryController.Inventory.STICK);
                         GameInventoryController.RemoveInventory(GameInventoryController.Inventory.ROPE);
@@ -320,11 +322,12 @@ public class TextController : MonoBehaviour
             }
             else
             {
-                message = "You fixed the plant using the stick as support and rope to tie them together. " +
-                        "You take a few steps back and feel a glow of satisfaction. In moments the chilly wind" +
-                        " stops blowing and you witness the environment suddenly change  itself from a dead " +
-                        "state to a healthy vegetation. The path ahead of you now shines brighter.\n\nSelect" +
-                        " F to move forward.";
+                message = "You broke the stick into 3-4 pieces and rest it against the broken part of the" +
+                    " cats legs and used the rope to tie them tightly around the leg to support the bone " +
+                    "and let it heal itself.\n\nThe cat stopped growling and stood up, walking slowly around" +
+                    " your legs. In the next few moments the cat changed into a white cat radiating white" +
+                    " light like an Animal spirit and then it vanished into thin air. You stood there in " +
+                    "utmost damned amazement thinking what just happened.\n\nSelect F to move forward.";
 
                 mainText.text = message;
 
@@ -339,17 +342,20 @@ public class TextController : MonoBehaviour
         {
             message = "You have now arrived deeper into the the right cave. Suddenly the ground starts " +
                 "shaking and the cave way behind you closes due to collapsed rocks. Now you cannot go back." +
-                " While exploring this section of the cave you come across a wild cat but it's staying low and" +
+                "\n\nWhile exploring this section of the cave you come across a wild cat but it's staying low and" +
                 " did not run after noticing your presense. You realised the cat has broken it's legs while" +
-                " jumping across the rocky terrain.\n\nSelect F to move forward.";
+                " jumping across the rocky terrain. You don't have anything that can help the poor soul." +
+                "\n\nSelect F to move forward.";
 
             mainText.text = message;
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                message = "You're moving forward deeper into the cave and sudenly you hear some noises " +
-                "coming from above, you look up and see a huge rock falling where you stand.\n\nYou" +
-                " were unable to move and died of a smashed skull.\n\nPress S to Play Again!";
+                message = "You went past the cat and when you were just about ten steps ahead, you hear " +
+                    "a vicious growling sound coming from behind. The cat turned into an 8 foot tall demon " +
+                    "panther.\n\nYour heart may have skipped a beat but before you could do anything you were" +
+                    " turned into several pieces of human meat by a single hit from the panters claws.\n\n" +
+                    "Press S to Play Again!";
 
                 gameState = GameState.DEATH;
             }
@@ -392,7 +398,7 @@ public class TextController : MonoBehaviour
             case GameState.DEATH: DEATH(message); break;
         }
     }
-    
+
     // Method to Create Auto Typing Effect
     IEnumerator ShowTypeText(string fullText)
     {
