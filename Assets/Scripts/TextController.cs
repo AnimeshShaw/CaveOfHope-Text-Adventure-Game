@@ -532,6 +532,8 @@ public class TextController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
+            GameInventoryController.RemoveItem(GameInventoryController.Inventory.DIAMOND);
+            GameInventoryController.RemoveItem(GameInventoryController.Inventory.WATERSKIN);
             GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_ENTRY);
             gameState = GameState.Start_S0;
         }
