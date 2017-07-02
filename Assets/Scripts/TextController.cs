@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +21,10 @@ public class TextController : MonoBehaviour
         SwampChallenge_SWC,
         AnimalChallenge_ANC,
         CrystalChallenge_CTC,
+        FountainGate_FTG,
+        FOUNTAIN,
         DEATH,
+        DeveloperTakeAway,
     };
 
     private GameState gameState;
@@ -136,8 +138,8 @@ public class TextController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            GameInventoryController.AddInventory(GameInventoryController.Inventory.STICK);
-            GameInventoryController.AddInventory(GameInventoryController.Inventory.ROPE);
+            GameInventoryController.AddItem(GameInventoryController.Inventory.STICK);
+            GameInventoryController.AddItem(GameInventoryController.Inventory.ROPE);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -179,8 +181,8 @@ public class TextController : MonoBehaviour
 
     private void State_SWC()
     {
-        if ((GameInventoryController.HasElement(GameInventoryController.Inventory.ROPE) &&
-                GameInventoryController.HasElement(GameInventoryController.Inventory.STICK)) || challengeCompleted)
+        if ((GameInventoryController.HasItem(GameInventoryController.Inventory.ROPE) &&
+                GameInventoryController.HasItem(GameInventoryController.Inventory.STICK)) || challengeCompleted)
         {
             if (!challengeCompleted)
             {
@@ -198,19 +200,19 @@ public class TextController : MonoBehaviour
                 {
                     challengeCompleted = true;
 
-                    GameInventoryController.RemoveInventory(GameInventoryController.Inventory.STICK);
-                    GameInventoryController.RemoveInventory(GameInventoryController.Inventory.ROPE);
+                    GameInventoryController.RemoveItem(GameInventoryController.Inventory.STICK);
+                    GameInventoryController.RemoveItem(GameInventoryController.Inventory.ROPE);
                 }
                 else if (Input.GetKeyDown(KeyCode.F))
                 {
-                    if (GameInventoryController.HasElement(GameInventoryController.Inventory.ROPE))
+                    if (GameInventoryController.HasItem(GameInventoryController.Inventory.ROPE))
                     {
                         message = "You're moving forward deeper into the cave and sudenly you hear some noises " +
                         "coming from above, you look up and see a huge rock falling where you stand.\n\nYou" +
                         " were unable to move and died of a smashed skull.\n\nPress S to Play Again!";
 
-                        GameInventoryController.RemoveInventory(GameInventoryController.Inventory.STICK);
-                        GameInventoryController.RemoveInventory(GameInventoryController.Inventory.ROPE);
+                        GameInventoryController.RemoveItem(GameInventoryController.Inventory.STICK);
+                        GameInventoryController.RemoveItem(GameInventoryController.Inventory.ROPE);
 
                         gameState = GameState.DEATH;
                     }
@@ -230,6 +232,7 @@ public class TextController : MonoBehaviour
                 {
                     GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_CRYSTAL);
                     gameState = GameState.CrystalChallenge_CTC;
+                    challengeCompleted = false;
                 }
             }
         }
@@ -282,8 +285,8 @@ public class TextController : MonoBehaviour
 
     private void State_ANC()
     {
-        if ((GameInventoryController.HasElement(GameInventoryController.Inventory.ROPE) &&
-                GameInventoryController.HasElement(GameInventoryController.Inventory.STICK)) || challengeCompleted)
+        if ((GameInventoryController.HasItem(GameInventoryController.Inventory.ROPE) &&
+                GameInventoryController.HasItem(GameInventoryController.Inventory.STICK)) || challengeCompleted)
         {
             if (!challengeCompleted)
             {
@@ -300,12 +303,12 @@ public class TextController : MonoBehaviour
                 {
                     challengeCompleted = true;
 
-                    GameInventoryController.RemoveInventory(GameInventoryController.Inventory.STICK);
-                    GameInventoryController.RemoveInventory(GameInventoryController.Inventory.ROPE);
+                    GameInventoryController.RemoveItem(GameInventoryController.Inventory.STICK);
+                    GameInventoryController.RemoveItem(GameInventoryController.Inventory.ROPE);
                 }
                 else if (Input.GetKeyDown(KeyCode.F))
                 {
-                    if (GameInventoryController.HasElement(GameInventoryController.Inventory.ROPE))
+                    if (GameInventoryController.HasItem(GameInventoryController.Inventory.ROPE))
                     {
                         message = "You went past the cat and when you were just about ten steps ahead, you hear " +
                             "a vicious growling sound coming from behind. The cat turned into an 8 foot tall demon " +
@@ -313,8 +316,8 @@ public class TextController : MonoBehaviour
                             " turned into several pieces of human meat by a single hit from the panters claws.\n\n" +
                             "Press S to Play Again!";
 
-                        GameInventoryController.RemoveInventory(GameInventoryController.Inventory.STICK);
-                        GameInventoryController.RemoveInventory(GameInventoryController.Inventory.ROPE);
+                        GameInventoryController.RemoveItem(GameInventoryController.Inventory.STICK);
+                        GameInventoryController.RemoveItem(GameInventoryController.Inventory.ROPE);
 
                         gameState = GameState.DEATH;
                     }
@@ -322,7 +325,7 @@ public class TextController : MonoBehaviour
             }
             else
             {
-                message = "You broke the stick into 3-4 pieces and rest it against the broken part of the" +
+                message = "You broke the stick into three to four pieces and rest it against the broken part of the" +
                     " cats legs and used the rope to tie them tightly around the leg to support the bone " +
                     "and let it heal itself.\n\nThe cat stopped growling and stood up, walking slowly around" +
                     " your legs. In the next few moments the cat changed into a white cat radiating white" +
@@ -335,6 +338,7 @@ public class TextController : MonoBehaviour
                 {
                     GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_CRYSTAL);
                     gameState = GameState.CrystalChallenge_CTC;
+                    challengeCompleted = false;
                 }
             }
         }
@@ -364,7 +368,173 @@ public class TextController : MonoBehaviour
 
     private void State_CTC()
     {
+        if (!challengeCompleted)
+        {
+            message = "After your magical experience you have now reached at another section of the dungeoneous " +
+            "cave. This part looks rough and rocky, in addition, it's darker here. \n\nWhat are those? You see" +
+            " some shiny rocky crystals attached to the cave walls and many similar looking stones widespread " +
+            "across the cave floor. Upon a closer look you realise that these shiny rocks are none other than " +
+            " Unpolished Diamond.\n\nSelect T to take the diamonds.\n\t\tF to move forward.";
 
+            mainText.text = message;
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                GameInventoryController.AddItem(GameInventoryController.Inventory.DIAMOND);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (GameInventoryController.HasItem(GameInventoryController.Inventory.DIAMOND))
+                {
+                    message = "You filled your pockets with the diamonds and the thought of becoming the richest " +
+                        "in the village had your mind occupied. You wouldn't stop looking at those diamonds. You " +
+                        "didn't notice that ahead of you was a small cliff. You fall from the cliff and hit your " +
+                        "head so hard that you die instantly.\n\nPress S to Play Again!";
+
+                    GameInventoryController.RemoveItem(GameInventoryController.Inventory.DIAMOND);
+
+                    gameState = GameState.DEATH;
+                }
+                else
+                {
+                    challengeCompleted = true;
+                }
+            }
+        }
+        else
+        {
+            message = "You ignored the diamonds and moved forward because you didn't come for the diamonds but " +
+                "rather a cure for your sick mother. Diamonds wouldn't do you any good since you like earning " +
+                "your living by working hard.\n\nYou were walking past the crystals ready to climb down a small" +
+                " cliff just ahead when you turn around and notice that the crystals are glowing brighter than " +
+                "ever, unable to comprehend the mystical nature of the cave you decide to climb down the cave " +
+                "but to add to your surprise a bridge suddenly appears over the cliff for you to continue your " +
+                "journey.\n\t\t\t\t\t\t\tPress C to Continue";
+
+            mainText.text = message;
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_FOUNTAIN_GATE);
+                //GameInventoryController.AddItem(GameInventoryController.Inventory.DIAMOND);                
+                gameState = GameState.FountainGate_FTG;
+                challengeCompleted = false;
+            }
+        }
+    }
+
+    private void State_FTG()
+    {
+        if (!challengeCompleted)
+        {
+            message = "You are now standing in front of a huge stone gate and you could hear the sound of the water " +
+            "fall from beyond the gate. You know that you have to cross the gate to get to the fall but their is" +
+            " an iron door which is locked. You can break the lock but all the stones / rocks around you is too big" +
+            " for you to pick up.\n\nYou see an average-size tortoise which you can pickup.\n\nSelect K to Kill the" +
+            " tortoise and use the Hard Shell.\n\t\tS to Search for Alternatives.";
+
+            mainText.text = message;
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                message = "You decided to killed the Tortoise and use it's hard shell to break the lock on the iron " +
+                    "gate. The moment you touched the tortoise from behind you could feel a burning sensation all " +
+                    "over your body. Soon you got burning marks and felt the intense pain. \n\nIn just ten mins " +
+                    "your body caught fire and you died a painfull death with your ashes in a cave where maybe no " +
+                    "human being will ever stepin for the next 100 years.\n\nPress S to Play Again!";
+
+                mainText.text = message;
+
+                gameState = GameState.DEATH;
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                challengeCompleted = true;
+            }
+        }
+        else
+        {
+            message = "You could have kill the tortoise but taking a life to save another isn't justice and your " +
+                "mother wouldn't be proud of you. You decided to look for alternatives.\n\nYou're looking around " +
+                "to get something to break the lock, just when you hear a cranking sound of rusted iron clashing " +
+                "or moving. You see that the iron gate has now opened itself for you. You go and take a look. You" +
+                " also find a waterskin.\n\nSelect T to Take the WaterSkin.\n\t\tF to move forward.";
+
+            mainText.text = message;
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                GameInventoryController.AddItem(GameInventoryController.Inventory.WATERSKIN);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_FOUNTAIN);
+                gameState = GameState.FOUNTAIN;
+            }
+        }
+    }
+
+    private void FOUNTAIN()
+    {
+        if (GameInventoryController.HasItem(GameInventoryController.Inventory.WATERSKIN))
+        {
+            message = "You finally arrived at your destination. It looks heavenly and you can't help but admire " +
+            "the condescending beauty of nature and this magical cave, \"Cave of Hope\". You can see the " +
+            "sparkling water fall which is getting collected in a large crystal vessel. You understand you need" +
+            " to collect that water. You hear the sound of rock moving. A passage to the earthly world opens & " +
+            "you see that the sun has fallen asleep with stars doing their shift. As you walked out of the Cave" +
+            " you noticed that the passage closed and soon there was no trace of door or hidden passage.\n\nSelect" +
+            " C to Collect water in your Waterskin and leave the Cave.";
+
+            mainText.text = message;
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                GameInventoryController.AddItem(GameInventoryController.Inventory.DIAMOND);
+                GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_NIGHT_SKY);
+
+                gameState = GameState.DeveloperTakeAway;
+            }
+        }
+        else
+        {
+            message = "You finally arrived at your destination. It looks heavenly and you can't help but admire" +
+            " the condescending beauty of nature and this magical cave, \"The Cave of Hope\".\n\nYou can see the " +
+            "sparkling water fall which is getting collected in a large crystal vessel. You understand you need" +
+            " to collect that water. You don't have a waterskin to collect water.\n\nSelect R to Go back to the" +
+            "fountain gate";
+
+            mainText.text = message;
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_FOUNTAIN_GATE);
+                gameState = GameState.FountainGate_FTG;
+            }
+        }
+
+    }
+
+    private void DevTakeAway()
+    {
+        GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_NIGHT_SKY);
+        message = "Your exprience was magical and you learned a lot. You adrmired the beauty of the" +
+            " night and walked towards home. You felt a bulge in your pocket and looked only to find" +
+            " a single diamond. You understood it was a gift and it will be enough to pay for your" +
+            " mother's treatment.\n\n\t\t\t\t\tDeveloper TakeAway\n\na.) Be compassionate towards all" +
+            " forms of life.\nb.) Greed will make your life a living hell. \nc.) Never harm others for" +
+            " personal gain.\n\nThank you for Playing! Press S to Play Again!";
+
+        mainText.text = message;
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_ENTRY);
+            gameState = GameState.Start_S0;
+        }
     }
 
     private void DEATH(string message)
@@ -376,7 +546,6 @@ public class TextController : MonoBehaviour
             GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_ENTRY);
             gameState = GameState.Start_S0;
         }
-
     }
 
     #endregion
@@ -395,6 +564,9 @@ public class TextController : MonoBehaviour
             case GameState.SwampChallenge_SWC: State_SWC(); break;
             case GameState.AnimalChallenge_ANC: State_ANC(); break;
             case GameState.CrystalChallenge_CTC: State_CTC(); break;
+            case GameState.FountainGate_FTG: State_FTG(); break;
+            case GameState.FOUNTAIN: FOUNTAIN(); break;
+            case GameState.DeveloperTakeAway: DevTakeAway(); break;
             case GameState.DEATH: DEATH(message); break;
         }
     }

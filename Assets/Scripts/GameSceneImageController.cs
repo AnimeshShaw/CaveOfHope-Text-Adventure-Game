@@ -25,7 +25,9 @@ public class GameSceneImageController : MonoBehaviour {
         [Description("cave_swamp")]
         CAVE_FOUNTAIN_GATE,
         [Description("cave_fountain_gate")]
-        CAVE_FOUNTAIN,        
+        CAVE_FOUNTAIN,
+        [Description("cave_night_sky")]
+        CAVE_NIGHT_SKY
     };
 
     // Use this for initialization
@@ -45,7 +47,8 @@ public class GameSceneImageController : MonoBehaviour {
             case ImageRes.CAVE_ANIMAL:
             case ImageRes.CAVE_CRYSTAL:
             case ImageRes.CAVE_FOUNTAIN_GATE:
-            case ImageRes.CAVE_FOUNTAIN:            
+            case ImageRes.CAVE_FOUNTAIN:
+            case ImageRes.CAVE_NIGHT_SKY:
                 image.sprite = Resources.Load<Sprite>(sceneImage.ToString()); break;
         }
     }

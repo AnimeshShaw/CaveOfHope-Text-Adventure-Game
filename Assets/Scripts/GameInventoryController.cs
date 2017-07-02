@@ -17,6 +17,8 @@ public class GameInventoryController : MonoBehaviour
         ROPE,
         [Description("diamond")]
         DIAMOND,
+        [Description("waterskin")]
+        WATERSKIN,
     }
 
     private static List<Inventory> collectedItems;
@@ -37,7 +39,7 @@ public class GameInventoryController : MonoBehaviour
         invIcons[0].enabled = true;
     }
 
-    public static void AddInventory(Inventory item)
+    public static void AddItem(Inventory item)
     {
         if (collectedItems.Contains(item) == false)
         {
@@ -61,10 +63,17 @@ public class GameInventoryController : MonoBehaviour
                 invIcons[1].sprite = Resources.Load<Sprite>(item.ToString());
                 collectedItems.Add(Inventory.DIAMOND);
             }
+
+            if (item == Inventory.WATERSKIN)
+            {
+                invIcons[2].enabled = true;
+                invIcons[2].sprite = Resources.Load<Sprite>(item.ToString());
+                collectedItems.Add(Inventory.WATERSKIN);
+            }
         }
     }
 
-    public static void RemoveInventory(Inventory item)
+    public static void RemoveItem(Inventory item)
     {
         if (collectedItems.Contains(item))
         {
@@ -86,10 +95,16 @@ public class GameInventoryController : MonoBehaviour
                 invIcons[1].sprite = null;
                 collectedItems.Remove(Inventory.DIAMOND);
             }
+            else if (item == Inventory.WATERSKIN)
+            {
+                invIcons[2].enabled = false;
+                invIcons[2].sprite = null;
+                collectedItems.Remove(Inventory.WATERSKIN);
+            }
         }
     }
 
-    public static bool HasElement(Inventory item)
+    public static bool HasItem(Inventory item)
     {
         return collectedItems.Contains(item);
     }
