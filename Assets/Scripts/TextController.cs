@@ -86,14 +86,14 @@ public class TextController : MonoBehaviour
         message = "You went inside the 'Cave' and standing near the mouth of the cave. The " +
             "cave from inside looks more humongous than from the outside. The cave reeks of" +
             " bat faeces.\n\nYou discover two pathways, one on the left and the other on the " +
-            "extreme right, and they lead the way deeper into the Cave, and see a large pile " +
+            "extreme right, and they lead the way deeper into the Cave, and also see a large pile " +
             "of rocks stacked in between the two caves.\n\nSelect I to inspect the Rock Pile, " +
-            "\n\t\tL to go to Left Cave Entrance, \n\t\tE to go to Right Cave ENtrance, and " +
-            "\n\t\tR to run away.";
+            "\n\t\tL to go to Left Cave Entrance, \n\t\tR to go to Right Cave ENtrance, and " +
+            "\n\t\tQ to Quit / Run Away.";
 
         mainText.text = message;
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             GameSceneImageController.SetImage(GameSceneImageController.ImageRes.COWARD_PUSSY);
             gameState = GameState.Coward_CW;
@@ -111,7 +111,7 @@ public class TextController : MonoBehaviour
             gameState = GameState.LeftCave_LT;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_ENTRANCE);
             gameState = GameState.RightCave_RT;
@@ -123,7 +123,7 @@ public class TextController : MonoBehaviour
         message = "You see a heap of rocks lying on top of each other and all together it " +
             "looks like one giant rock but you notice a small junction rock at the bottom which " +
             "perhaps supports the entire rock pile, but you dare not touch it. You find a " +
-            "wooden skick and some ragged rope near the junction point and wonder how it " +
+            "wooden skick and some ragged rope near the junction rock and wonder how it " +
             "got there? You hear some humming noise coming from the left tunnel (probably " +
             "air stream) and faint growling noise from the right cave.\n\nSelect P to Pickup " +
             "Stick and Rope,\n\t\tL to go just inside Left Cave Entrance,\n\t\tR to go just " +
@@ -187,7 +187,7 @@ public class TextController : MonoBehaviour
             if (!challengeCompleted)
             {
                 message = "You have now arrived deeper into the the left cave. Suddenly the ground starts " +
-                    "shaking and the cave way behind you closes due to collapsed rocks. Now you cannot go back." +
+                    "shaking and the cave way behind you closes due to the collapsed rocks. Now you cannot go back." +
                     " This section of the cave looks like a dead and decayed swamp graveyard. The place is " +
                     "windy and cold.\n\nYou notice that among the dead there's a single plant that is still " +
                     "alive but the main trunk is somewhat broken by the wind. If it stays like that, it will " +
@@ -221,8 +221,8 @@ public class TextController : MonoBehaviour
             else
             {
                 message = "You fixed the plant using the stick as support and rope to tie them together. " +
-                        "You take a few steps back and feel a glow of satisfaction.\n\nIn moments the chilly wind" +
-                        " stops blowing and you witness the environment suddenly change  itself from a dead " +
+                        "You take a few steps back and feel a glow of satisfaction.\n\nIn moments, the chilly wind" +
+                        " stops blowing and you witness the environment suddenly change itself from a dead " +
                         "state to a healthy vegetation. The path ahead of you now shines brighter.\n\nSelect" +
                         " F to move forward.";
 
@@ -261,8 +261,8 @@ public class TextController : MonoBehaviour
     private void State_RT()
     {
         message = "You now stand just inside the right cave. The cave is very uneven and looks like small " +
-            "mountains have come out of the walls forming a terrain. It shows no direct way inside the cave. " +
-            "However, if you do a little rock climbing then you wouldn't have much problem. \n\nAfter every " +
+            "mountains have come out of the walls forming a terrain. There is no direct pathway inside the cave." +
+            " However, if you do a little rock climbing then you wouldn't have much problem.\n\nAfter every " +
             "few seconds you feel like you heard a growling sound from inside the cave. You wonder if you " +
             "should go inside.\n\nSelect F to move forward deeper into the cave, and,\n\t\tR to Return to the " +
             "Cave Mouth.";
@@ -293,7 +293,7 @@ public class TextController : MonoBehaviour
                 message = "You have now arrived deeper into the the right cave. Suddenly the ground starts " +
                     "shaking and the cave way behind you closes due to collapsed rocks. Now you cannot go back." +
                     "\n\nWhile exploring this section of the cave you come across a wild cat but it's staying low and" +
-                    " did not run after noticing your presense. You realised the cat has broken it's legs while" +
+                    " did not runaway after noticing your presense. You realised the cat might have his leg broken while" +
                     " jumping across the rocky terrain.\n\nSelect F to move forward.\n\t\tU to use the Rope and" +
                     " Stick to help the Cat.";
 
@@ -313,7 +313,7 @@ public class TextController : MonoBehaviour
                         message = "You went past the cat and when you were just about ten steps ahead, you hear " +
                             "a vicious growling sound coming from behind. The cat turned into an 8 foot tall demon " +
                             "panther.\n\nYour heart may have skipped a beat but before you could do anything you were" +
-                            " turned into several pieces of human meat by a single hit from the panters claws.\n\n" +
+                            " turned into several pieces of human meat with a single hit from the panthers claws.\n\n" +
                             "Press S to Play Again!";
 
                         GameInventoryController.RemoveItem(GameInventoryController.Inventory.STICK);
@@ -328,8 +328,8 @@ public class TextController : MonoBehaviour
                 message = "You broke the stick into three to four pieces and rest it against the broken part of the" +
                     " cats legs and used the rope to tie them tightly around the leg to support the bone " +
                     "and let it heal itself.\n\nThe cat stopped growling and stood up, walking slowly around" +
-                    " your legs. In the next few moments the cat changed into a white cat radiating white" +
-                    " light like an Animal spirit and then it vanished into thin air. You stood there in " +
+                    " your legs. In the next few moments, the cat changed into a white cat radiating white" +
+                    " light like an Animal Spirit and then it vanished into thin air. You stood there in " +
                     "utmost damned amazement thinking what just happened.\n\nSelect F to move forward.";
 
                 mainText.text = message;
@@ -347,7 +347,7 @@ public class TextController : MonoBehaviour
             message = "You have now arrived deeper into the the right cave. Suddenly the ground starts " +
                 "shaking and the cave way behind you closes due to collapsed rocks. Now you cannot go back." +
                 "\n\nWhile exploring this section of the cave you come across a wild cat but it's staying low and" +
-                " did not run after noticing your presense. You realised the cat has broken it's legs while" +
+                " did not runaway after noticing your presense. You realised the cat might have his leg broken while" +
                 " jumping across the rocky terrain. You don't have anything that can help the poor soul." +
                 "\n\nSelect F to move forward.";
 
@@ -358,7 +358,7 @@ public class TextController : MonoBehaviour
                 message = "You went past the cat and when you were just about ten steps ahead, you hear " +
                     "a vicious growling sound coming from behind. The cat turned into an 8 foot tall demon " +
                     "panther.\n\nYour heart may have skipped a beat but before you could do anything you were" +
-                    " turned into several pieces of human meat by a single hit from the panters claws.\n\n" +
+                    " turned into several pieces of human meat with a single hit from the panthers claws.\n\n" +
                     "Press S to Play Again!";
 
                 gameState = GameState.DEATH;
@@ -371,8 +371,8 @@ public class TextController : MonoBehaviour
         if (!challengeCompleted)
         {
             message = "After your magical experience you have now reached at another section of the dungeoneous " +
-            "cave. This part looks rough and rocky, in addition, it's darker here. \n\nWhat are those? You see" +
-            " some shiny rocky crystals attached to the cave walls and many similar looking stones widespread " +
+            "cave. This part looks rough and rocky, in addition, it's darker here.\n\nWhat are those? You see " +
+            "some shiny rocky crystals attached to the cave walls and many similar looking stones widespread " +
             "across the cave floor. Upon a closer look you realise that these shiny rocks are none other than " +
             " Unpolished Diamond.\n\nSelect T to take the diamonds.\n\t\tF to move forward.";
 
@@ -440,9 +440,9 @@ public class TextController : MonoBehaviour
             {
                 message = "You decided to killed the Tortoise and use it's hard shell to break the lock on the iron " +
                     "gate. The moment you touched the tortoise from behind you could feel a burning sensation all " +
-                    "over your body. Soon you got burning marks and felt the intense pain. \n\nIn just ten mins " +
-                    "your body caught fire and you died a painfull death with your ashes in a cave where maybe no " +
-                    "human being will ever stepin for the next 100 years.\n\nPress S to Play Again!";
+                    "over your body. Soon you got burning marks and felt the intense pain.\n\nIn just about ten mins" +
+                    " your body caught fire and you died a painfull death with your ashes in a cave where maybe no " +
+                    "human being will ever stepin in the next century.\n\nPress S to Play Again!";
 
                 mainText.text = message;
 
@@ -456,7 +456,7 @@ public class TextController : MonoBehaviour
         }
         else
         {
-            message = "You could have kill the tortoise but taking a life to save another isn't justice and your " +
+            message = "You could have killed the tortoise but taking a life to save another isn't justice and your " +
                 "mother wouldn't be proud of you. You decided to look for alternatives.\n\nYou're looking around " +
                 "to get something to break the lock, just when you hear a cranking sound of rusted iron clashing " +
                 "or moving. You see that the iron gate has now opened itself for you. You go and take a look. You" +
@@ -483,11 +483,11 @@ public class TextController : MonoBehaviour
         {
             message = "You finally arrived at your destination. It looks heavenly and you can't help but admire " +
             "the condescending beauty of nature and this magical cave, \"Cave of Hope\". You can see the " +
-            "sparkling water fall which is getting collected in a large crystal vessel. You understand you need" +
-            " to collect that water. You hear the sound of rock moving. A passage to the earthly world opens & " +
-            "you see that the sun has fallen asleep with stars doing their shift. As you walked out of the Cave" +
-            " you noticed that the passage closed and soon there was no trace of door or hidden passage.\n\nSelect" +
-            " C to Collect water in your Waterskin and leave the Cave.";
+            "sparkling water fall which is getting collected into a large crystal vessel. You understand you need" +
+            " to collect that water. You hear the sound of rocks moving.\n\nA passage to the earthly world opens & " +
+            "you see that the sun has fallen asleep with stars doing their shift. Once you walk out of the Cave" +
+            " this passage will be closed with no trace of a door or hidden passage.\n\nSelect C to Collect water" +
+            " in your Waterskin and Leave.";
 
             mainText.text = message;
 
@@ -503,7 +503,7 @@ public class TextController : MonoBehaviour
         {
             message = "You finally arrived at your destination. It looks heavenly and you can't help but admire" +
             " the condescending beauty of nature and this magical cave, \"The Cave of Hope\".\n\nYou can see the " +
-            "sparkling water fall which is getting collected in a large crystal vessel. You understand you need" +
+            "sparkling water fall which is getting collected into a large crystal vessel. You understand you need" +
             " to collect that water. You don't have a waterskin to collect water.\n\nSelect R to Go back to the" +
             "fountain gate";
 
@@ -521,7 +521,7 @@ public class TextController : MonoBehaviour
     private void DevTakeAway()
     {
         GameSceneImageController.SetImage(GameSceneImageController.ImageRes.CAVE_NIGHT_SKY);
-        message = "Your exprience was magical and you learned a lot. You adrmired the beauty of the" +
+        message = "Your exprience was magical and you learned a lot. You admired the beauty of the" +
             " night and walked towards home. You felt a bulge in your pocket and looked only to find" +
             " a single diamond. You understood it was a gift and it will be enough to pay for your" +
             " mother's treatment.\n\n\t\t\t\t\tDeveloper TakeAway\n\na.) Be compassionate towards all" +
