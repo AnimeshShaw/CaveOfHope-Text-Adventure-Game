@@ -1,5 +1,13 @@
 # CaveOfHope-Text-Adventure-Game
-Cave of Hope is a Simple and Beginner Level Text Adventure Game made with Unity3D 5.6 and Visual Studio. 
+Cave of Hope is a Simple and Beginner Level Text Adventure Game made with Unity3D 2019.x and Visual Studio 2019. 
+
+---
+
+## Download and Usage
+
+Currently, the game is distributed in two formats, WebGL and Windows Binary (x86_64). Both of them can be found within the Build folder under their respective section. Compressed Archives can be found under the Releases folder. Alternatively, you can download them directly using the link below. 
+
+**Latest Release:** https://github.com/AnimeshShaw/CaveOfHope-Text-Adventure-Game/releases/tag/v2.0
 
 ---
 
@@ -7,16 +15,8 @@ Cave of Hope is a Simple and Beginner Level Text Adventure Game made with Unity3
 
 ![CaveOfHope-GDD](GameDesignDocument-GDD/CaveOfHope-GDD-Final.png)
 
-## Live Demo
-
-You can play the game live [HERE](https://projects.animeshshaw.com/unity-projects/caveofhope/).
-
-## Current Release
-
-Latest Version: [v1.1-Beta](https://github.com/AnimeshShaw/CaveOfHope-Text-Adventure-Game/releases/tag/v1.1-Beta)
-
 ---
 
-If you can have an idea or want to suggest a feature, feel free to start an issue or contact me on [Twitter: Psycho__Coder](https://twitter.com/Psycho__Coder)
+If you can have an idea or want to suggest a feature, feel free to start an issue or contact me on [Twitter: Rumpelstil7skin](https://twitter.com/Rumpelstil7skin)
 
-__Mail Me:__ anim3.sh[at]outlook[dot]com / coder[at]animeshshaw[dot]com
+__Mail Me:__ anim3.sh[at]outlook[dot]com
