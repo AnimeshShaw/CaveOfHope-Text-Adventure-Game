@@ -1,6 +1,12 @@
 # CaveOfHope-Text-Adventure-Game
 Cave of Hope is a Simple and Beginner Level Text Adventure Game made with Unity3D 2019.x and Visual Studio 2019. 
 
+### Support this project
+
+If you learned something new, then plese support this project on **Flattr**
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/@AnimeshShaw) 
+
 ---
 
 ## Download and Usage
